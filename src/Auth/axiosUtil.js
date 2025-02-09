@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const baseURL = 'http://localhost:9000/';
+export const baseURL = 'https://developed-jerry-vikasnagar221-feb1bda1.koyeb.app/';
 
 const axiosInstance = axios.create({
     baseURL,
