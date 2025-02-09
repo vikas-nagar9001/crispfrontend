@@ -1,0 +1,82 @@
+.code-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.line-number {
+    user-select: none;
+    pointer-events: none;
+    width: 1.5em;
+    font-size: 16px;
+    /* Adjust width as needed */
+    text-align: center;
+
+    color: #052a11;
+    ;
+    /* Adjust color as needed */
+}
+
+.code-editor {
+    flex: 1;
+    min-width: 0;
+    /* Ensure textarea can shrink smaller than its content */
+    position: relative;
+}
+
+
+.scrollbar::-webkit-scrollbar {
+    width: 8px;
+    /* Adjust width */
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Adjust handle color */
+    border-radius: 10px;
+    /* Adjust border radius */
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: #e6e5e5;
+    border-radius: 10px;
+    /* Adjust track color */
+}
+
+        .code-editor textarea {
+            overflow: hidden;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* Internet Explorer 10+ */
+            resize: none;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #4e0000;
+            padding-left: 3.5em;
+            /* Adjust to match line number width */
+            /* padding-top: 0.5em; */
+            /* Adjust to match line number height */
+            font-family: inherit;
+            width: 100%;
+            height: 100%;
+            font-size: 16px;
+            white-space: pre-wrap;
+        }
+
+.output-container {
+    width: 48%;
+    height: fit-content;
+    background-color: #f6f6f6;
+    color: rgb(75 85 99);
+    font-size: 17px;
+    /* display: none; */
+    /*  Hide the output section by default */
+}
+
+#head{
+    color: rgb(37 99 235);
+}
+
+
+  

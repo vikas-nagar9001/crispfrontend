@@ -1,0 +1,21 @@
+
+  /* CSS styles after nav */
+  .title-head {
+    font-weight: 500;
+    font-style: normal;
+  }
+  .title-left-head {
+    height: 114px;
+    top: 116px;
+  }
+  .active-head {
+    color: #015AE7;
+    margin-left: 30px;
+  }
+  .sub-menu-head {
+    display: flex;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    font-style: normal;
+  }

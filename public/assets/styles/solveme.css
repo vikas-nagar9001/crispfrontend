@@ -1,0 +1,25 @@
+
+  /* CSS styles after nav */
+  .title{
+    font-weight: 500;
+    font-style: normal;
+  }
+  .title-left{
+    height: 114px;
+    top: 116px;
+  }
+  .active{
+    color: #015AE7;
+    margin-left: 30px;
+  }
+  .sub-menu{
+    display: flex;
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .svbg{
+   height: 128%;
+  }

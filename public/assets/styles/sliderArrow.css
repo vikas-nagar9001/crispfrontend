@@ -1,0 +1,15 @@
+.react-multiple-carousel__arrow
+ {
+    background-color: rgba(70, 68, 68, 0.315);
+    height: 65px;
+    width: 10px;
+    border-radius: 15px;
+    z-index: 0;
+}
+
+.react-multiple-carousel__arrow_right{
+    margin-right: 500px;
+}
+.react-multiple-carousel__arrow_left{
+    margin-right: 40%;
+}
