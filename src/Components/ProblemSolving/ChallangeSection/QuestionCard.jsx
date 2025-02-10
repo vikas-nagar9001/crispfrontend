@@ -5,8 +5,8 @@ import { fetchQuestion } from '../../../redux/api/questionsApi';
 import { useNavigate } from 'react-router-dom';
 import { fetchUser } from '../../../redux/Slices/authSlice';
 
-import star from '../../../../public/assets/images/problemsolving/star.svg';
-import starFilled from '../../../../public/assets/images/problemsolving/starfill.svg';
+import star from '/assets/images/problemsolving/star.svg';
+import starFilled from '/assets/images/problemsolving/starfill.svg';
 import design from '/assets/images/problemsolving/design.svg';
 
 const QuestionCard = ({ question }) => {
@@ -48,9 +48,9 @@ const QuestionCard = ({ question }) => {
                 const userId = user._id;
                 const questionId = question._id;
                 if (isFavorite) {
-                    await axios.delete(`http://localhost:9000/fav/removeFavorite?userId=${userId}&questionId=${questionId}`);
+                    await axios.delete(`${VITE_BASE_URL}/fav/removeFavorite?userId=${userId}&questionId=${questionId}`);
                 } else {
-                    await axios.post('http://localhost:9000/fav/addFavorite', { userId, questionId });
+                    await axios.post(`${VITE_BASE_URL}/fav/addFavorite`, { userId, questionId });
                 }
                 setIsFavorite(prevIsFavorite => !prevIsFavorite);
             }

@@ -34,8 +34,8 @@ export const Submission = ({ userId, questionId }) => {
                         {/* Conditional rendering based on answerLogs */}
                         {answerLogs.length > 0 ? (
                             <div style={{ fontFamily: "Poppins", boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.14)" }} className="sm:w-[88.5%] w-[84%] sm:ml-0 ml-[21px] relative overflow-x-auto">
-                                <table className="w-full sm:text-sm md:text-xl text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <thead className=" text-xm text-gray-500 dark:text-gray-400 bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <table className="w-full sm:text-sm md:text-xl text-xs text-left rtl:text-right text-gray-500 ">
+                                    <thead className=" text-xm text-gray-500 bg-white border-b ">
                                         <tr className='shadow-xl' >
                                             <th style={{ fontWeight: "normal" }} scope="col" className="px-6 py-4 text-black">
                                                 RESULT
@@ -53,8 +53,8 @@ export const Submission = ({ userId, questionId }) => {
                                     </thead>
                                     <tbody>
                                         {answerLogs.map((log, index) => (
-                                            <tr key={index} className="shadow-xl bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-black ">
-                                                <th scope="row" className={`px-6 py-4 ${log.result === 'Right' ? 'text-blue-500' : 'text-red-500'} font-normal whitespace-nowrap dark:text-white`}>
+                                            <tr key={index} className="shadow-xl bg-white border-b  text-black ">
+                                                <th scope="row" className={`px-6 py-4 ${log.result === 'Right' ? 'text-blue-500' : 'text-red-500'} font-normal whitespace-nowrap `}>
                                                     {log.result} Answer
                                                 </th>
                                                 <td className="px-6 py-4 font-normal">{log.maxscore}</td>

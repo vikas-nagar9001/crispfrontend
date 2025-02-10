@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import '../../../../public/assets/styles/solveme.css';
-import solveme from '/assets/images/leaderboard/solveme.svg';
+import '/public/assets/styles/solveme.css';
 import { useSelector } from 'react-redux';
 
 const Solveme = () => {
@@ -14,7 +13,7 @@ const Solveme = () => {
         <div className="flex mw-1440">
           <div className="ml-auto mt-[-93px]  sm:block hidden relative vector-section four">
             <img className='svbg'
-              src={solveme}
+              src='/assets/images/leaderboard/solveme.svg'
               alt="not found"
             />
           </div>

@@ -1,25 +1,28 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUser, logoutUser } from '../../../redux/Slices/authSlice';
+import { FaRegUser } from "react-icons/fa";
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
   const toggleProfile = () => {
     setIsProfileOpen(!isProfileOpen);
   };
+
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const isLoading = useSelector((state) => state.auth.isLoading);
   const error = useSelector((state) => state.auth.error);
   const profileRef = useRef(null);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -27,7 +30,7 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate('/'); // Navigate to landing page upon logout
+    navigate('/');
   };
 
   useEffect(() => {
@@ -38,21 +41,19 @@ const Header = () => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [profileRef]);
 
-
   return (
     <>
       <header>
-        <nav className="fixed w-[100%] z-10 shadow-4xl border-b-2 bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 h-20">
+        <nav className="fixed w-[100%] z-10 shadow-4xl border-b-2 bg-white border-gray-200 px-4 lg:px-6 py-2.5  h-20">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <NavLink to="/" className="flex items-center">
               <img
-                src="../../public/assets/images/Header/Logo.svg"
+                src="/assets/images/Header/logo.svg"
                 className="mr-3 sm:h-9 h-[2rem]"
                 alt="CodeCrisp Logo"
               />
@@ -61,7 +62,7 @@ const Header = () => {
             <div className="flex items-center lg:order-2">
               <NavLink
                 to="#"
-                className="sm:block hidden text-gray-800 dark:text-white hover:bg-gray-50 hover:text-blue-600 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+                className="sm:block hidden text-gray-800 hover:bg-gray-50 hover:text-blue-600 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none "
               >
                 For developers
               </NavLink>
@@ -70,8 +71,14 @@ const Header = () => {
                 <div className="relative sm:block hidden">
                   <button onClick={toggleProfile} className="focus:outline-none">
                     <img
-                      src={user.profilePic}
+                      // Use the user.profilePic if available; otherwise, fall back to defaultProfilePic.
+                      src={user.profilePic || <FaRegUser />}
                       alt="Profile"
+                      onError={(e) => {
+                        // In case the image fails to load, use the default profile picture.
+                        e.target.onerror = null;
+                        e.target.src = defaultProfilePic;
+                      }}
                       className="w-12 h-12 rounded-full border-2 border-blue-500"
                     />
                   </button>
@@ -82,22 +89,29 @@ const Header = () => {
                     >
                       <div className="flex flex-col items-center justify-center p-6">
                         <img
-                          src={user.profilePic}
+                          src={user.profilePic || defaultProfilePic}
                           alt="Profile"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = defaultProfilePic;
+                          }}
                           className="w-24 h-24 rounded-full border-4 border-blue-500 mb-4"
                         />
                         <h2 className="text-lg font-medium text-gray-700">{user.displayName}</h2>
 
-                        <NavLink to="favorite" className="block w-full text-center px-4 py-2 text-sm text-white default hover:bg-blue-600 transition-colors rounded mt-2"
+                        <NavLink 
+                          to="favorite" 
+                          className="block w-full text-center px-4 py-2 text-sm text-white default hover:bg-blue-600 transition-colors rounded mt-2"
                         >
                           Favorites
                         </NavLink>
 
                         {user && user.isAdmin && (
-                          <Link to="/dashboard" className="block w-full text-center px-4 py-2 text-sm text-white default hover:bg-blue-600 transition-colors rounded mt-2">
-                            <div>
-                              Dashboard
-                            </div>
+                          <Link 
+                            to="/dashboard" 
+                            className="block w-full text-center px-4 py-2 text-sm text-white default hover:bg-blue-600 transition-colors rounded mt-2"
+                          >
+                            Dashboard
                           </Link>
                         )}
 
@@ -114,21 +128,19 @@ const Header = () => {
                   )}
                 </div>
               ) : (
-
                 <Link to='/signup'>
                   <button
-                    className="sm:block hidden rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 default"
+                    className="sm:block hidden rounded-lg text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none default"
                   >
                     Sign up
                   </button>
                 </Link>
-
               )}
 
               <button
                 onClick={toggleMenu}
                 type="button"
-                className="inline-flex items-center p-2 ml-1 text-lg text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                className="inline-flex items-center p-2 ml-1 text-lg text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
               >
                 <span className="sr-only">Open main menu</span>
                 <svg
@@ -161,7 +173,7 @@ const Header = () => {
               className={`${isMenuOpen ? 'block' : 'hidden'} justify-between items-center w-full lg:flex lg:w-auto lg:order-1`}
               id="mobile-menu-2"
             >
-              <ul className="bg-white flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 text-lg lg:mt-0 dark:bg-gray-800">
+              <ul className="bg-white flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 text-lg lg:mt-0 ">
                 <li className="ml-4 ">
                   <NavLink
                     to="/"
@@ -169,7 +181,7 @@ const Header = () => {
                     className={({ isActive }) =>
                       isActive
                         ? 'text-blue-600 py-2'
-                        : 'block py-2 dark:text-white text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
+                        : 'block py-2  text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
                     }
                   >
                     Home
@@ -182,38 +194,12 @@ const Header = () => {
                     className={({ isActive }) =>
                       isActive
                         ? 'text-blue-600 py-2'
-                        : 'block py-2 dark:text-white text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
+                        : 'block py-2  text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
                     }
                   >
                     Preparation
                   </NavLink>
                 </li>
-                {/* <li className="ml-4">
-                  <NavLink
-                    to="/problem"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'text-blue-600 py-2'
-                        : 'block py-2 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
-                    }
-                  >
-                    Problem
-                  </NavLink>
-                </li> */}
-                {/* <li className="ml-4">
-                  <NavLink
-                    to="/submission"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={({ isActive }) =>
-                      isActive
-                        ? 'text-blue-600 py-2'
-                        : 'block py-2 text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
-                    }
-                  >
-                    Submission
-                  </NavLink>
-                </li> */}
                 <li className="ml-4">
                   <NavLink
                     to="/about"
@@ -221,7 +207,7 @@ const Header = () => {
                     className={({ isActive }) =>
                       isActive
                         ? 'text-blue-600 py-2'
-                        : 'block py-2 dark:text-white text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
+                        : 'block py-2  text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
                     }
                   >
                     About
@@ -234,7 +220,7 @@ const Header = () => {
                     className={({ isActive }) =>
                       isActive
                         ? 'text-blue-600 py-2'
-                        : 'block py-2 dark:text-white text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
+                        : 'block py-2  text-gray-700 border-b border-gray-100 hover:text-blue-600 hover:bg-gray-50 hover:border-blue-200 lg:hover:bg-transparent lg:border-0 lg:p-0'
                     }
                   >
                     Contact
@@ -243,7 +229,7 @@ const Header = () => {
                 <button
                   href="#"
                   style={{ borderBottom: '1px solid #b7c9cc' }}
-                  className="md:hidden sm:mr-5 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 hover:text-blue-600 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-blue-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                  className="md:hidden sm:mr-5 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 hover:text-blue-600 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 "
                 >
                   Log in
                   <svg
@@ -263,12 +249,12 @@ const Header = () => {
                 <button
                   href="#"
                   style={{ borderBottom: '1px solid #b7c9cc' }}
-                  className="md:hidden sm:mr-5 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 hover:text-blue-600 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-blue-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                  className="md:hidden sm:mr-5 inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 hover:text-blue-600 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100"
                 >
                   Request Demo
                 </button>
 
-                <button className="md:hidden w-full rounded-sm text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 default">
+                <button className="md:hidden w-full rounded-sm text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium text-lg px-4 lg:px-5 py-2 lg:py-2.5 mr-2  focus:outline-none default">
                   Sign up
                 </button>
               </ul>

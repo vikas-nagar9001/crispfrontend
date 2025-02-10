@@ -21,12 +21,12 @@ const Signup = () => {
                 <div className="flex flex-col items-center justify-center ">
                     <div className="bg-white shadow rounded-xl lg:w-[31%]  md:w-1/2 w-full p-10 mt-6">
                         <NavLink to="/" className="flex justify-center">
-                            <img src="../../public/assets/images/Header/Logo.svg"
+                            <img src="/assets/images/Header/logo.svg"
                                 className="mr-3 sm:h-9 h-[2rem]"
                                 alt="CodeCrisp Logo" />
                         </NavLink>
 
-                        {/* <p tabIndex={0} className="flex justify-center focus:outline-none text-2xl font-semibold leading-6 text-gray-800 mt-6" >
+                        <p tabIndex={0} className="flex justify-center focus:outline-none text-2xl font-semibold leading-6 text-gray-800 mt-6" >
                             Sign In
                         </p>
                         <p
@@ -37,7 +37,7 @@ const Signup = () => {
                                 className="hover:text-gray-500 focus:text-gray-500 focus:outline-none focus:underline hover:underline text-sm font-medium leading-none  text-gray-800 cursor-pointer">
                                 Sign up here
                             </a>
-                        </p> */}
+                        </p>
                         <button onClick={handleLogin} aria-label="Continue with google" role="button"
                             className=" focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-10">
                             <svg width={19} height={20} viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg" >
@@ -65,7 +65,7 @@ const Signup = () => {
                             <p className="text-base font-medium ml-4 text-gray-700">
                                 Continue with Twitter
                             </p>
-                        </button>
+                        </button> */}
                         <div className="w-full flex items-center justify-between py-5">
                             <hr className="w-full bg-gray-400" />
                             <p className="text-base font-medium leading-4 px-2.5 text-gray-400">
@@ -96,7 +96,7 @@ const Signup = () => {
                             <button role="button" className="focus:ring-2 focus:ring-offset-2 bg-[#015AE7] text-sm font-semibold leading-none text-white focus:outline-none  border rounded-lg hover:bg-blue-700 py-4 w-full" >
                                 Create my account
                             </button>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </div>

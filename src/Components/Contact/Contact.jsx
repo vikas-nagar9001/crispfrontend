@@ -36,17 +36,17 @@ function Contact() {
     return (
         <>
             <ToastContainer position="top-right" />
-            <section className="bg-[#F7FAFF] dark:bg-slate-800" id="contact">
+            <section className="bg-[#F7FAFF] " id="contact">
                 <div className="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8 lg:py-32">
                     <div className="mb-4">
                         <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
-                            <p className="text-base font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-200">
+                            <p className="text-base font-semibold uppercase tracking-wide text-blue-600 ">
                                 Contact
                             </p>
-                            <h2 className="font-heading mb-4 font-bold tracking-tight text-gray-900 dark:text-white text-3xl sm:text-5xl">
+                            <h2 className="font-heading mb-4 font-bold tracking-tight text-gray-900  text-3xl sm:text-5xl">
                                 Get in Touch
                             </h2>
-                            <p className="mx-auto mt-4 max-w-3xl text-xl text-gray-600 dark:text-slate-400">
+                            <p className="mx-auto mt-4 max-w-3xl text-xl text-gray-600">
 
                                 "Connect with Us: Your Message Matters to Us."
                             </p>
@@ -55,7 +55,7 @@ function Contact() {
                     <div className="flex items-stretch justify-center">
                         <div className="grid md:grid-cols-2">
                             <div className="h-full pr-6">
-                                <p className="mt-3 mb-12 text-lg text-gray-600 dark:text-slate-400">
+                                <p className="mt-3 mb-12 text-lg text-gray-600 ">
 
 
                                     "CodeCrisp: Elevate Your Coding Skills. Expert Guidance, Comprehensive Resources.
@@ -81,13 +81,13 @@ function Contact() {
                                             </svg>
                                         </div>
                                         <div className="ml-4 mb-4">
-                                            <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 ">
                                                 Our Address
                                             </h3>
-                                            <p className="text-gray-600 dark:text-slate-400">
+                                            <p className="text-gray-600 ">
                                                 442, Part I, Scheme No 114, Indore, 
                                             </p>
-                                            <p className="text-gray-600 dark:text-slate-400">
+                                            <p className="text-gray-600 ">
                                             Madhya Pradesh 452010
                                             </p>
                                         </div>
@@ -112,13 +112,13 @@ function Contact() {
                                             </svg>
                                         </div>
                                         <div className="ml-4 mb-4">
-                                            <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 ">
                                                 Contact
                                             </h3>
-                                            <p className="text-gray-600 dark:text-slate-400">
+                                            <p className="text-gray-600 ">
                                                 Mobile: +91  98068 51570
                                             </p>
-                                            <p className="text-gray-600 dark:text-slate-400">
+                                            <p className="text-gray-600 ">
                                                 Mail: codecrisp@gmail.com
                                             </p>
                                         </div>
@@ -142,21 +142,21 @@ function Contact() {
                                             </svg>
                                         </div>
                                         <div className="ml-4 mb-4">
-                                            <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">
+                                            <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 ">
                                                 Working hours
                                             </h3>
-                                            <p className="text-gray-600 dark:text-slate-400">
+                                            <p className="text-gray-600 ">
                                                 Monday - Friday: 09:00 - 05:00
                                             </p>
-                                            <p className="text-gray-600 dark:text-slate-400">
+                                            <p className="text-gray-600 ">
                                                 Saturday &amp; Sunday: Closed
                                             </p>
                                         </div>
                                     </li>
                                 </ul>
                             </div>
-                            <div  className="card rounded-2xl h-fit max-w-6xl p-5 md:p-12 bg-[#E7F1FF] dark:bg-blue-100"  id="form ">
-                                <h2 className="mb-4 text-2xl font-bold dark:text-gray-500">
+                            <div  className="card rounded-2xl h-fit max-w-6xl p-5 md:p-12 bg-[#E7F1FF] "  id="form ">
+                                <h2 className="mb-4 text-2xl font-bold ">
                                     Ready to Get Started?
                                 </h2>
                                 <form onSubmit={handleSubmit}>
@@ -172,7 +172,7 @@ function Contact() {
                                                     id="name"
                                                     autoComplete="given-name"
                                                     placeholder="Your name"
-                                                    className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                                                    className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0"
                                                     name="name"
                                                     value={formData.name}
                                                     onChange={handleChange}
@@ -188,7 +188,7 @@ function Contact() {
                                                     id="email"
                                                     autoComplete="email"
                                                     placeholder="Your email address"
-                                                    className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                                                    className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0"
                                                     name="email"
                                                     value={formData.email}
                                                     onChange={handleChange}
@@ -206,7 +206,7 @@ function Contact() {
                                                 cols={30}
                                                 rows={5}
                                                 placeholder="Write your message..."
-                                                className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"
+                                                className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0"
                                                 value={formData.message}
                                                 onChange={handleChange}
                                             />

@@ -11,7 +11,7 @@ const Favorite = () => {
     if (user && user._id) {
       const fetchFavoriteQuestions = async () => {
         try {
-          const response = await axios.get(`http://localhost:9000/fav/favoriteQuestions/${user._id}`);
+          const response = await axios.get(`${VITE_BASE_URL}/fav/favoriteQuestions/${user._id}`);
           setFavoriteQuestions(response.data.favoriteQuestions);
         } catch (error) {
           console.error('Error fetching favorite questions:', error);

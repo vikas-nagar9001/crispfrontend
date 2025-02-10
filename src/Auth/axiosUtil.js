@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const baseURL = 'https://developed-jerry-vikasnagar221-feb1bda1.koyeb.app/';
+export const baseURL = import.meta.env.VITE_BASE_URL;
 
 const axiosInstance = axios.create({
     baseURL,
